@@ -50,7 +50,8 @@ public class JobData {
 
         // load data, if not already loaded
         loadData();
-
+        ArrayList<HashMap<String,String>> copyAllJobs = (ArrayList<HashMap<String, String>>) allJobs.clone();
+        System.out.println(copyAllJobs);
         return allJobs;
     }
 
@@ -72,6 +73,7 @@ public class JobData {
 
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
+
         for (HashMap<String, String> row : allJobs) {
 
             String aValue = row.get(column);
@@ -81,7 +83,9 @@ public class JobData {
             }
         }
 
+
         return jobs;
+
     }
 
     /**
@@ -129,7 +133,6 @@ public class JobData {
 
         loadData();
         ArrayList<HashMap<String, String>> printList = new ArrayList<>();
-
         for (HashMap<String, String> row : allJobs) {
             for (Map.Entry<String, String> col : row.entrySet()) {
                 if (col.getValue().toLowerCase().contains(searchValue.toLowerCase())) {
@@ -138,11 +141,12 @@ public class JobData {
                     break;
                 }
 
-
             }
 
         }
         return printList;
+
+
     }
 }
 
