@@ -51,8 +51,8 @@ public class JobData {
         // load data, if not already loaded
         loadData();
         ArrayList<HashMap<String,String>> copyAllJobs = (ArrayList<HashMap<String, String>>) allJobs.clone();
-        System.out.println(copyAllJobs);
-        return allJobs;
+        //System.out.println(copyAllJobs);
+        return copyAllJobs;
     }
 
     /**
@@ -78,7 +78,8 @@ public class JobData {
 
             String aValue = row.get(column);
 
-            if (aValue.toLowerCase().contains(value)) {
+           if (aValue.toLowerCase().contains(value.toLowerCase())) {
+            //if (aValue.equalsIgnoreCase(value)== true){
                 jobs.add(row);
             }
         }
@@ -136,19 +137,24 @@ public class JobData {
         for (HashMap<String, String> row : allJobs) {
             for (Map.Entry<String, String> col : row.entrySet()) {
                 if (col.getValue().toLowerCase().contains(searchValue.toLowerCase())) {
+
+                    //if (col.getValue().equalsIgnoreCase(searchValue)== true) {
                     printList.add(row);
 
                     break;
                 }
-
             }
-
         }
+
+
         return printList;
 
 
     }
-}
+    }
+
+
+
 
 
 
